@@ -43,3 +43,4 @@ models:
       +schema: iowa_stage
     IOWA_VAULT:
       +schema: iowa_vault
+      +materialized: table
