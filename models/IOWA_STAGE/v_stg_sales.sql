@@ -6,6 +6,7 @@ source_model: "raw_sales"
 derived_columns:
   RECORD_SOURCE: "'BQ_IOWA'"
   LOAD_DATETIME: "CURRENT_TIMESTAMP()"
+  SALES_DATE: "date"
   STORE_LATITUDE: "ROUND(CAST(ST_Y(store_location) AS NUMERIC), 6)"
   STORE_LONGITUDE: "ROUND(CAST(ST_X(store_location) AS NUMERIC), 6)"
 

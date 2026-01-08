@@ -7,6 +7,7 @@
     source_model='v_stg_sales',
     src_pk='INVOICEITEM_HK',
     src_hashdiff='INVOICEITEM_HASHDIFF',
+    src_eff='SALES_DATE',
      src_payload=[
         'volume_sold_gallons',
         'volume_sold_liters',
