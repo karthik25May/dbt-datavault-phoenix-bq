@@ -6,6 +6,8 @@ source_model: "raw_sales"
 derived_columns:
   RECORD_SOURCE: "'BQ_IOWA'"
   LOAD_DATETIME: "CURRENT_TIMESTAMP()"
+  STORE_LATITUDE: "ROUND(CAST(ST_Y(store_location) AS NUMERIC), 6)"
+  STORE_LONGITUDE: "ROUND(CAST(ST_X(store_location) AS NUMERIC), 6)"
 
 hashed_columns:
   # -------------------------
@@ -53,6 +55,33 @@ hashed_columns:
   # -------------------------
   # HASHDIFF (Satellite)
   # -------------------------
+  ITEM_HASHDIFF:
+    is_hashdiff: true
+    columns:
+      - ITEM_DESCRIPTION
+
+  CATEGORY_HASHDIFF:
+    is_hashdiff: true
+    columns:
+      - CATEGORY_NAME
+
+  VENDOR_HASHDIFF:
+    is_hashdiff: true
+    columns:
+      - VENDOR_NAME
+
+  STORE_HASHDIFF:
+    is_hashdiff: true
+    columns:
+      - STORE_NAME
+      - ADDRESS
+      - CITY
+      - ZIP_CODE
+      - STORE_LATITUDE
+      - STORE_LONGITUDE
+      - COUNTY_NUMBER
+      - COUNTY
+
   INVOICEITEM_HASHDIFF:
     is_hashdiff: true
     columns:
