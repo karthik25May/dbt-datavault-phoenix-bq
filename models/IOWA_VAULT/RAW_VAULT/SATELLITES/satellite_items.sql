@@ -1,4 +1,5 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='incremental',
+unique = 'ITEM_HK') }}
 
 {{ automate_dv.sat(
     source_model='v_stg_sales',
