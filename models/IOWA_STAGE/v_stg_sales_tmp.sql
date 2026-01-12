@@ -9,26 +9,29 @@ derived_columns:
   SALES_DATE: "date"
   STORE_LATITUDE: "ROUND(CAST(ST_Y(store_location) AS NUMERIC), 6)"
   STORE_LONGITUDE: "ROUND(CAST(ST_X(store_location) AS NUMERIC), 6)"
-
+  STORE_NUMBER_CLEAN: "REPLACE(STORE_NUMBER,'.0','')"
+  CATEGORY_CLEAN: "REPLACE(CATEGORY,'.0','')"
+  ITEM_NUMBER_CLEAN: "REPLACE(ITEM_NUMBER,'.0','')"
+  VENDOR_NUMBER_CLEAN: "REPLACE(VENDOR_NUMBER,'.0','')"
 hashed_columns:
   # -------------------------
   # HUB HASH KEYS
   # -------------------------
   VENDOR_HK:
     columns:
-      - VENDOR_NUMBER
+      - VENDOR_NUMBER_CLEAN
 
   ITEM_HK:
     columns:
-      - ITEM_NUMBER
+      - ITEM_NUMBER_CLEAN
 
   CATEGORY_HK:
     columns:
-      - CATEGORY
+      - CATEGORY_CLEAN
 
   STORE_HK:
     columns:
-      - STORE_NUMBER
+      - STORE_NUMBER_CLEAN
 
   INVOICEITEM_HK:
     columns:
@@ -39,19 +42,19 @@ hashed_columns:
   # -------------------------
   ITEM_VENDOR_HK:
     columns:
-      - ITEM_NUMBER
-      - VENDOR_NUMBER
+      - ITEM_NUMBER_CLEAN
+      - VENDOR_NUMBER_CLEAN
 
   ITEM_CATEGORY_HK:
     columns:
-      - ITEM_NUMBER
-      - CATEGORY
+      - ITEM_NUMBER_CLEAN
+      - CATEGORY_CLEAN
 
   INVOICEITEM_FK_HK:
     columns:
       - INVOICE_AND_ITEM_NUMBER
-      - STORE_NUMBER
-      - ITEM_NUMBER
+      - STORE_NUMBER_CLEAN
+      - ITEM_NUMBER_CLEAN
 
   # -------------------------
   # HASHDIFF (Satellite)
@@ -111,4 +114,4 @@ hashed_columns:
     hashed_columns = metadata_dict['hashed_columns']
 ) }}
 
-where INVOICE_AND_ITEM_NUMBER not in (select INVOICE_AND_ITEM_NUMBER from `dbt-phoenix-vault`.`dev_iowa_vault`.`hub_invoices`)
+-- where INVOICE_AND_ITEM_NUMBER not in (select INVOICE_AND_ITEM_NUMBER from `dbt-phoenix-vault`.`dev_iowa_vault`.`hub_invoices`)
