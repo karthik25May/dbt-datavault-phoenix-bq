@@ -16,7 +16,7 @@ item_category_pit as (
         item_effective_end_date,
         item_effective_start_date,
         as_of_date
-    from {{ ref('pit_item_category') }}
+    from {{ ref('bridge_item_category') }}
 ),
 
 category_sat as (
