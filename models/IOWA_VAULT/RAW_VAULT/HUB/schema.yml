@@ -1,0 +1,85 @@
+version: 2
+
+models:
+
+  # =========================
+  # HUBS
+  # =========================
+
+  - name: hub_items
+    description: "Hub table for Item business keys"
+    columns:
+      - name: item_hk
+        description: "Hash key for item"
+        tests:
+          - not_null
+          - unique
+      - name: item_number
+        description: "Business key for item"
+        tests:
+          - not_null
+      - name: LOAD_DATETIME
+        tests:
+          - not_null
+      - name: record_source
+        tests:
+          - not_null
+
+  - name: hub_categories
+    description: "Hub table for Category business keys"
+    columns:
+      - name: category_hk
+        tests:
+          - not_null
+          - unique
+      - name: category
+        tests:
+          - not_null
+      - name: LOAD_DATETIME
+        tests:
+          - not_null
+      - name: record_source
+        tests:
+          - not_null
+
+  - name: hub_vendors
+    description: "Hub table for Vendor business keys"
+    columns:
+      - name: vendor_hk
+        tests:
+          - not_null
+          - unique
+      - name: vendor_number
+        tests:
+          - not_null
+      - name: LOAD_DATETIME
+        tests:
+          - not_null
+
+  - name: hub_stores
+    description: "Hub table for Store business keys"
+    columns:
+      - name: store_hk
+        tests:
+          - not_null
+          - unique
+      - name: store_number
+        tests:
+          - not_null
+      - name: LOAD_DATETIME
+        tests:
+          - not_null
+
+  - name: hub_invoices
+    description: "Hub table for Invoice business keys"
+    columns:
+      - name: INVOICEITEM_HK
+        tests:
+          - not_null
+          - unique
+      - name: INVOICE_AND_ITEM_NUMBER
+        tests:
+          - not_null
+      - name: LOAD_DATETIME
+        tests:
+          - not_null

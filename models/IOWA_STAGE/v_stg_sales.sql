@@ -111,4 +111,4 @@ hashed_columns:
     hashed_columns = metadata_dict['hashed_columns']
 ) }}
 
-where INVOICE_AND_ITEM_NUMBER not in (select INVOICE_AND_ITEM_NUMBER from `dbt-phoenix-vault`.`dev_iowa_vault`.`hub_invoices`)
+-- where INVOICE_AND_ITEM_NUMBER not in (select INVOICE_AND_ITEM_NUMBER from `dbt-phoenix-vault`.`dev_iowa_vault`.`hub_invoices`)
